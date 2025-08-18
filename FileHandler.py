@@ -10,26 +10,26 @@ class FileHandler:
     def __init__(self, filepath):
         self.filepath = filepath
 
-    def append_instance(self, n, subconjuntos, matriz_A):
+    def append_instance(self, n, subsets, matrix_A):
         """
         !Important: below is the format of the instances as variables
         @param n (int): The number of variables.
-        @param subconjuntos (list[list[int]]): A list of lists representing subsets.
-        @param matriz_A (np.ndarray): A full (n x n) NumPy array for the matrix.
+        @param subsets (list[list[int]]): A list of lists representing subsets.
+        @param matrix_A (np.ndarray): A full (n x n) NumPy array for the matrix.
         """
         try:
             with open(self.filepath, 'a') as f:
                 f.write(f"{n}\n")
 
-                tamanhos_str = "".join([str(len(s))+" " for s in subconjuntos])
+                tamanhos_str = "".join([str(len(s))+" " for s in subsets])
                 f.write(f"{tamanhos_str}\n")
 
-                for s in subconjuntos:
+                for s in subsets:
                     linha_s = " ".join([str(elem) for elem in s])
                     f.write(f"{linha_s}\n")
 
                 for i in range(n):
-                    elementos_triangulares = matriz_A[i, i:]
+                    elementos_triangulares = matrix_A[i, i:]
                     linha_A = " ".join([str(val) for val in elementos_triangulares])
                     f.write(f"{linha_A}\n")
                 
@@ -64,20 +64,20 @@ class FileHandler:
                 n = int(next(line_iterator))
                 sizes = next(line_iterator) # just to consume the line, as subset size is not used rn
                 
-                subconjuntos = []
+                subsets = []
                 for _ in range(n):
-                    subconjuntos.append([int(x) for x in next(line_iterator).split()])
+                    subsets.append([int(x) for x in next(line_iterator).split()])
                 
-                matriz_A = np.zeros((n, n), dtype=int)
+                matrix_A = np.zeros((n, n), dtype=int)
                 for i in range(n):
                     valores = [int(x) for x in next(line_iterator).split()]
                     for j, valor in enumerate(valores):
-                        matriz_A[i, i + j] = valor
+                        matrix_A[i, i + j] = valor
                 
                 all_instances.append({
                     'n': n,
-                    'subconjuntos': subconjuntos,
-                    'matriz_A': matriz_A
+                    'subsets': subsets,
+                    'matrix_A': matrix_A
                 })
 
         except (IOError, ValueError, StopIteration) as e:

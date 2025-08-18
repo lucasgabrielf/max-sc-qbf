@@ -39,9 +39,9 @@ def main():
             print(f"\n--- Instance {i+1} Data ---")
             print(f"n: {instance_data['n']}")
             print("Subsets:")
-            for s_idx, s in enumerate(instance_data['subconjuntos']):
+            for s_idx, s in enumerate(instance_data['subsets']):
                 print(f"  S{s_idx+1}: {s}")
             print("Matrix A:")
-            print(instance_data['matriz_A'])
+            print(instance_data['matrix_A'])
             print("-" * 25)
 main()
