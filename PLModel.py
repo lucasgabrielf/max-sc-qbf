@@ -15,7 +15,7 @@ def create_model(instance):
     y = [ [ m.add_var(var_type=BINARY, name=f"y_{i}{j}") for j in range(n) ] for i in range(n) ] 
 
     # *objective function
-    m.objective = maximize( xsum( matrix_A[i][j]*y[i][j]  for i in range(n) for j in range(n) if i>=n) )
+    m.objective = maximize( xsum( matrix_A[i][j]*y[i][j]  for i in range(n) for j in range(i, n)) )
 
     # *constraints
     for i in range(n):
@@ -23,8 +23,10 @@ def create_model(instance):
             m += y[i][j] <= x[i]
             m += y[i][j] <= x[j]
             m += y[i][j] >= x[i] + x[j] - 1
+
+    print(subsets)
     for i in range(n):
-        m += xsum( x[j] for j in range(n) if j in subsets[i] ) >= 1
+        m += xsum( x[j] for j in range(n) if (i+1) in subsets[j] ) >= 1
 
     print("\nStarting optimization...")
     start_time = time.time()
