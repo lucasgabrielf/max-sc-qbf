@@ -30,6 +30,7 @@ def create_model(instance):
 
     print("\nStarting optimization...")
     start_time = time.time()
+    m.max_seconds = 600
     m.optimize()
     execution_time = time.time() - start_time
 

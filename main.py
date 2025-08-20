@@ -1,5 +1,5 @@
-from FileHandler import FileHandler
-import PLModel
+from Intances.FileHandler import FileHandler
+import Model.PLModel as PLModel
 import os
 
 file = os.path.join(os.getcwd(), "instances.txt")

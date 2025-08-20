@@ -1,5 +1,5 @@
-from FileHandler import FileHandler
-from MAXSCQBFGenerator import MAXSCQBFGenerator
+from Intances.FileHandler import FileHandler
+from Intances.MAXSCQBFGenerator import MAXSCQBFGenerator
 import os
 import numpy as np
 import random
