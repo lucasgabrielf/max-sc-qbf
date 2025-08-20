@@ -1,6 +1,4 @@
 import numpy as np
-import random
-import os
 
 class FileHandler:
     """
@@ -12,10 +10,10 @@ class FileHandler:
 
     def append_instance(self, n, subsets, matrix_A):
         """
-        !Important: below is the format of the instances as variables
-        @param n (int): The number of variables.
-        @param subsets (list[list[int]]): A list of lists representing subsets.
-        @param matrix_A (np.ndarray): A full (n x n) NumPy array for the matrix.
+        @params:
+            n (int): The number of variables.
+            subsets (list[list[int]]): A list of lists representing subsets.
+            matrix_A (np.ndarray): A full (n x n) NumPy array for the matrix.
         """
         try:
             with open(self.filepath, 'a') as f:
@@ -25,13 +23,13 @@ class FileHandler:
                 f.write(f"{tamanhos_str}\n")
 
                 for s in subsets:
-                    linha_s = " ".join([str(elem) for elem in s])
-                    f.write(f"{linha_s}\n")
+                    line_s = " ".join([str(elem) for elem in s])
+                    f.write(f"{line_s}\n")
 
                 for i in range(n):
                     elementos_triangulares = matrix_A[i, i:]
-                    linha_A = " ".join([str(val) for val in elementos_triangulares])
-                    f.write(f"{linha_A}\n")
+                    line_A = " ".join([str(val) for val in elementos_triangulares])
+                    f.write(f"{line_A}\n")
                 
                 # Separator of the file, so its content is separated into blocks
                 f.write("---\n")

@@ -1,5 +1,5 @@
-from Intances.FileHandler import FileHandler
-from Intances.MAXSCQBFGenerator import MAXSCQBFGenerator
+from Instances.FileHandler import FileHandler
+from Instances.MAXSCQBFGenerator import MAXSCQBFGenerator
 import os
 import numpy as np
 import random
@@ -14,7 +14,6 @@ def main():
 
     patterns = [
         'random',
-        'disjoint_groups',
         'sparse',
         'dense'
     ]
@@ -27,7 +26,7 @@ def main():
     print(f"\n--- Generating and appending {num_instances_to_generate} instances ---")
     for i in range(num_instances_to_generate):
         print(f"Generating instance {i+1}/{num_instances_to_generate}...")
-        n, subsets, matrix = gen.generate_instance(n=n_values[random.randint(0, 4)], pattern=patterns[random.randint(0, 3)])
+        n, subsets, matrix = gen.generate_instance(n=n_values[random.randint(0, 4)], pattern=patterns[random.randint(0, 2)])
         fh.append_instance(n, subsets, matrix)
     
     
