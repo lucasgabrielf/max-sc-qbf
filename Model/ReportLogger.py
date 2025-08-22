@@ -10,9 +10,10 @@ class ReportLogger:
             print(f"Error adding instance index to file '{self.filepath}': {e}")
 
 
-    def append_result(self, solution_val , gap, execution_time):
+    def append_result(self, pattern, n, solution_val , gap, execution_time):
         try:
             with open(self.filepath, 'a') as f:
+                f.write(f"[SIZE] {n} [PATTERN] {pattern.upper()} \n")
                 f.write(f"[SOLUTION VALUE] {solution_val}\n")
                 f.write(f"[GAP] {gap}\n")
                 f.write(f"[EXECUTION TIME] {execution_time}\n")

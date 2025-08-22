@@ -1,7 +1,7 @@
 from mip import *
 import time
 
-def create_model(instance, reportLogger):
+def create_model(instance):
     n = instance['n']
     subsets = instance['subsets']
     matrix_A = instance['matrix_A']
@@ -48,7 +48,6 @@ def create_model(instance, reportLogger):
             # Print the value of each variable in the row
             row_values = [int(y[i][j].x) for j in range(n)]
             print(row_values)
-            reportLogger.append_result(solution_val, gap, execution_time)
             return solution_val, gap, execution_time
     else:
         print("No solution found.")

@@ -77,7 +77,7 @@ class MAXSCQBFGenerator:
         elif pattern == 'dense':
             subsets = self._generate_dense_subsets(n, elements)
         else:
-            return None
+            return None, None, None, None
         
         matrix_A = np.random.randint(min_val_A, max_val_A + 1, size=(n, n))
         return n, subsets, matrix_A

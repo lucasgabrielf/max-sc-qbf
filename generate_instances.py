@@ -22,12 +22,17 @@ def main():
     fh.clean_file()
 
     num_instances_to_generate = 15
+    n_chosen = 0
     
     print(f"\n--- Generating and appending {num_instances_to_generate} instances ---")
     for i in range(num_instances_to_generate):
         print(f"Generating instance {i+1}/{num_instances_to_generate}...")
-        n, subsets, matrix = gen.generate_instance(n=n_values[random.randint(0, 4)], pattern=patterns[random.randint(0, 2)])
-        fh.append_instance(n, subsets, matrix)
+        # notice i%3 guarantees that there will be an equal number of intances with each pattern
+        pattern = patterns[i%3]
+        if i%3==0 and i!=0:
+            n_chosen += 1
+        n, subsets, matrix = gen.generate_instance(n=n_values[n_chosen], pattern=pattern)
+        fh.append_instance(pattern, n, subsets, matrix)
     
     
     print("\n--- Reading all instances from the file ---")
@@ -36,6 +41,7 @@ def main():
     if instances:
         for i, instance_data in enumerate(instances):
             print(f"\n--- Instance {i+1} Data ---")
+            print(f"n: {instance_data['pattern']}")
             print(f"n: {instance_data['n']}")
             print("Subsets:")
             for s_idx, s in enumerate(instance_data['subsets']):

@@ -8,7 +8,7 @@ class FileHandler:
     def __init__(self, filepath):
         self.filepath = filepath
 
-    def append_instance(self, n, subsets, matrix_A):
+    def append_instance(self, pattern, n, subsets, matrix_A):
         """
         @params:
             n (int): The number of variables.
@@ -17,6 +17,7 @@ class FileHandler:
         """
         try:
             with open(self.filepath, 'a') as f:
+                f.write(f"{pattern.upper()}\n")
                 f.write(f"{n}\n")
 
                 tamanhos_str = "".join([str(len(s))+" " for s in subsets])
@@ -59,6 +60,7 @@ class FileHandler:
                 lines = block.splitlines()
                 line_iterator = iter(lines)
 
+                pattern = next(line_iterator)
                 n = int(next(line_iterator))
                 sizes = next(line_iterator) # just to consume the line, as subset size is not used rn
                 
@@ -73,6 +75,7 @@ class FileHandler:
                         matrix_A[i, i + j] = valor
                 
                 all_instances.append({
+                    "pattern": pattern,
                     'n': n,
                     'subsets': subsets,
                     'matrix_A': matrix_A
