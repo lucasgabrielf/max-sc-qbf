@@ -1,32 +1,32 @@
 # Max Set Cover Quadratic Binary Function Problem (MAX-SC-QBF)
 
-O problema **MAX-SC-QBF** consiste em maximizar uma função quadrática binária sujeita a restrições de cobertura de conjuntos, onde o universo a ser coberto é o próprio conjunto de variáveis da função.
+The MAX-SC-QBF problem consists of maximizing a quadratic binary function subject to set cover constraints, where the universe to be covered is the set of variables itself.
 
-* Seja $N = {1, \dots, n}$ o conjunto de variáveis.
+* Let $N=\\{{1,\dots,n\\}}$ be the set of variables.
 
-* Seja $S = {S_1, \dots, S_n}$ uma coleção de subconjuntos $S_i \subseteq N$, representando os elementos que o subconjunto $i$ cobre.
+* Let $S=\\{S_1,\dots,S_n\\}$ be a collection of subsets $S_i \subseteq N$, representing the elements covered by subset $i$.
 
-Cada subconjunto $S_i$ está associado a uma variável binária $x_i$, que indica se o subconjunto foi selecionado ou não.
+Each subset $S_i$ is associated with a binary variable $x_i$, indicating whether the subset is selected.
 
-Para cada par $(i,j)$ de subconjuntos, existe um coeficiente $a_{ij} \in \mathbb{R}$ que representa o ganho (positivo ou negativo) ao selecionar ambos simultaneamente.
+For each pair $(i,j)$ of subsets, there is a coefficient $a_{ij} \in \mathbb{R}$ that represents the gain (positive or negative) obtained by selecting both subsets simultaneously.
 
-O objetivo é escolher subconjuntos de forma que todas as variáveis de $N$ sejam cobertas, ou seja, para todo $k \in N$, exista ao menos um subconjunto $S_i$ tal que $k \in S_i$ e $x_i = 1$, e ainda buscando maximizar o ganho quadrático total, derivado das interações entre subconjuntos selecionados.
+The goal is to select subsets such that all variables in $N$ are covered — that is, for every $k \in N$, there exists at least one subset $S_i$ such that $k \in S_i$ and $x_i = 1$ — while maximizing the total quadratic gain derived from the interactions among the selected subsets.
 
-Mais formalmente, o problema pode ser definido como: dado o conjunto de variáveis $N=\\{{1,\dots,n\\}}$, uma coleção de subconjuntos $S=\\{S_1,\dots,S_n\\}$ com $S_i \subseteq N$, variáveis binárias $x_i$ indicando a seleção de $S_i$, e coeficientes $a_{ij} \in \mathbb{R}$ que modelam o ganho pela seleção conjunta de $(i,j)$, formulamos:
+More formally, the problem can be defined as follows: given the set of variables $N=\\{{1,\dots,n\\}}$, a collection of subsets $S=\\{S_1,\dots,S_n\\}$ with $S_i \subseteq N$, binary variables $x_i$ indicating the selection of $S_i$, and coefficients $a_{ij} \in \mathbb{R}$ modeling the gain from jointly selecting $(i,j)$, we formulate:
 
-**Função Objetivo**
+**Objective Function**
 
 $$
 \sum_{i=1}^{n}\sum_{j=1}^{n} a_{ij}\,x_i x_j
 $$
 
-**Sujeito a (cobertura)**
+**Subject to (coverage)**
 
 $$
 \sum_{i:\, k \in S_i} x_i \ge 1, \quad \forall\, k \in N
 $$
 
-**Domínio**
+**Domain**
 
 $$
 x_i \in \{0,1\}, \quad \forall\, i \in N
