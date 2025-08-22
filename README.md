@@ -29,5 +29,5 @@ $$
 **Domain**
 
 $$
-x_i \in \{0,1\}, \quad \forall\, i \in N
+x_i \in \\{0,1\\}, \quad \forall\, i \in N
 $$
