@@ -1,3 +1,5 @@
+# Max Set Cover Quadratic Binary Function Problem (MAX-SC-QBF)
+
 O problema **MAX-SC-QBF** consiste em maximizar uma função quadrática binária sujeita a restrições de cobertura de conjuntos, onde o universo a ser coberto é o próprio conjunto de variáveis da função.
 
 * Seja $N = {1, \dots, n}$ o conjunto de variáveis.
